@@ -12,6 +12,14 @@ body {
     text-align: center;
 }
 
+#question-box {
+    display: none;
+}
+
+#intro {
+    display: block;
+}
+
 /* Start Button styling */
 
 /* Question content styling */
