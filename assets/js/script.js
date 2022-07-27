@@ -5,15 +5,14 @@ var timerEl = document.getElementById('countdown');
 var startButton = document.getElementById("start-button");
 var questionIndex = 0;
 var question = document.getElementById("question");
-var option1 = document.getElementById("option-1");
-var option2 = document.getElementById("option-2");
-var option3 = document.getElementById("option-3");
-var option4 = document.getElementById("option-4");
+var option1 = document.getElementById("button-option-1");
+var option2 = document.getElementById("button-option-2");
+var option3 = document.getElementById("button-option-3");
 
-// start button begins timer - add event listener on button click
+// timer function
 
 function countdown() {
-    var timeLeft = 45;
+    var timeLeft = 15;
     var timeInterval = setInterval(function() {
         if (timeLeft > 1) {
             timerEl.textContent = timeLeft + ' seconds remaining';
@@ -23,55 +22,46 @@ function countdown() {
             timerEl.textContent = timeLeft + ' second remaining';
         }
         else {
-            timerEl.textContent = '';
-            clearInterval(timeInterval);
-            //displayMessage();
+            //endGame function
         }
     }, 1000);
 };
 
-// countdown();
-
-// timer in top right corner counts down
-
-//question content
-
-//object obj.key = val
-// answer key is another object, answers could also be an array
+//question content, array of questions with three objects
 var quizQuestions = [
     {
-        question: "kddkjfsdkjf",
+        question: "Which of the following is NOT a coding language?",
         answers: {
-            A: 'a', //place comma after each answer
-            B: 'b',
-            C: 'c',
+            A: 'JavaScript', 
+            B: 'Waffle House',
+            C: 'Python',
         },
         correctAnswer: 'b'
     },
     {
-        question: "sldkjfldskjf",
+        question: "Are semicolons required in JavaScript for the code to work?",
         answers: {
-            A: 'a',
-            B: 'b',
-            C: 'c',
+            A: 'Yes, you must have them.',
+            B: 'No, but you should have them.',
+            C: 'No, they are completely unnecessary.',
         },
-        correctAnswer: 'c'
+        correctAnswer: 'b'
     },
     {
-        question: "sldkjjf",
+        question: "What does JavaScript do?",
         answers: {
-            A: 'a',
-            B: 'b',
-            C: 'c',
+            A: 'Gives style to a webpage.',
+            B: 'Adds functionality to a webpage.',
+            C: 'Provides the basic structure of a webpage.',
         },
-        correctAnswer: 'a'
-    } //add comma here and insert additional questions
+        correctAnswer: 'b'
+    } 
 ];
 
+// index for question array
 for(var i=0; i < quizQuestions.length; i++) {
-    console.log(i);
-    console.log(quizQuestions[i]);
-    console.log(quizQuestions[i].question);
+
+
 }
 
 function displayQuestion() {
@@ -82,7 +72,7 @@ function displayQuestion() {
     
 }
 
-// when we click the start button, countdown starts and the questions display
+// start button begins timer and switches screen to first question
 function startGame() {
     intro.style.display = "none";
     questionBox.style.display = "block";
@@ -100,5 +90,5 @@ function startGame() {
 // quiz records the score or you input the score yourself??
 // score and name recorded 
 
-//event listener
+//event listeners
 startButton.addEventListener('click', startGame)
