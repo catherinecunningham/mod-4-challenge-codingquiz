@@ -5,9 +5,16 @@
 
 /* High Scores in top left corner */
 
-/* Timer in top right corner */
-
 /* Body Styles */
+h2 {
+    text-align: left;
+    font-size: 12px;
+}
+
+#high-scores {
+    text-align: right;
+}
+
 body {
     text-align: center;
 }
