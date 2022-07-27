@@ -1,4 +1,4 @@
-//global variables
+//GLOBAL VARIABLES
 var intro = document.getElementById("intro");
 var questionBox = document.getElementById("question-box");
 var timerEl = document.getElementById('countdown');
@@ -9,8 +9,8 @@ var option1 = document.getElementById("button-option-1");
 var option2 = document.getElementById("button-option-2");
 var option3 = document.getElementById("button-option-3");
 
+// FUNCTIONS
 // timer function
-
 function countdown() {
     var timeLeft = 15;
     var timeInterval = setInterval(function() {
@@ -60,7 +60,8 @@ var quizQuestions = [
 
 // index for question array
 for(var i=0; i < quizQuestions.length; i++) {
-
+    //complete loop to run through all questions in array
+    //based on wrong or correct answer function outputs
 
 }
 
@@ -72,6 +73,17 @@ function displayQuestion() {
     
 }
 
+function wrongAnswer() {
+    //display "wrong" below question
+    //take time away from countdown
+}
+
+function correctAnswer() {
+    //display "correct" below question
+    //move on to next question
+    //store point in local storage
+}
+
 // start button begins timer and switches screen to first question
 function startGame() {
     intro.style.display = "none";
@@ -80,15 +92,18 @@ function startGame() {
     displayQuestion();
 }
 
-// add "Wrong" and "Correct" indicator
-// if question correct, move on to next question AND add to score
-// if question wrong, REMOVE time from timer AND move on to next question
-
 // timer runs out
-// end of quiz
-// input name 
-// quiz records the score or you input the score yourself??
-// score and name recorded 
+function endGame() {
+    //form to input initials
+    //score is stored in local storage
+}
 
-//event listeners
-startButton.addEventListener('click', startGame)
+function displayScores() {
+    //scores displayed on screen after form input
+}
+
+//EVENT LISTENERS
+startButton.addEventListener('click', startGame);
+option1.addEventListener('click', wrongAnswer);
+option3.addEventListener('click', wrongAnswer);
+option2.addEventListener('click', correctAnswer);
