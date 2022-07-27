@@ -1,7 +1,7 @@
-// start button begins timer
-
-// basic countdown setup
+// start button begins timer - add event listener on button click
 var timerEl = document.getElementById('countdown');
+timerEl.addEventListener('click', function() {
+// basic countdown setup
 function countdown() {
     var timeLeft = 45;
     var timeInterval = setInterval(function() {
@@ -19,6 +19,7 @@ function countdown() {
         }
     }, 1000);
 }
+});
 
 countdown();
 
