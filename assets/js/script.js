@@ -1,5 +1,27 @@
 // start button begins timer
 
+// basic countdown setup
+var timerEl = document.getElementById('countdown');
+function countdown() {
+    var timeLeft = 45;
+    var timeInterval = setInterval(function() {
+        if (timeLeft > 1) {
+            timerEl.textcontent = timeLeft + ' seconds remaining';
+            timeleft--;
+        }
+        else if (timeLeft === 1) {
+            timerEl.textContent = timeLeft + ' second remaining';
+        }
+        else {
+            timerEl.textContent = '';
+            clearInterval(timeInterval);
+            displayMessage();
+        }
+    }, 1000);
+}
+
+countdown();
+
 // timer in top right corner counts down
 
 //question content
