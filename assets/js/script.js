@@ -8,11 +8,15 @@ var question = document.getElementById("question");
 var option1 = document.getElementById("button-option-1");
 var option2 = document.getElementById("button-option-2");
 var option3 = document.getElementById("button-option-3");
+var endText = document.getElementById("end-text");
+var initials = document.getElementById("initials");
+var wrongText = document.getElementById("wrong-answer");
+var correctText = document.getElementById("correct-answer");
 
 // FUNCTIONS
 // timer function
 function countdown() {
-    var timeLeft = 15;
+    var timeLeft = 3;
     var timeInterval = setInterval(function() {
         if (timeLeft > 1) {
             timerEl.textContent = timeLeft + ' seconds remaining';
@@ -20,9 +24,12 @@ function countdown() {
         }
         else if (timeLeft === 1) {
             timerEl.textContent = timeLeft + ' second remaining';
+            timeLeft--;
         }
-        else {
-            //endGame function
+        else if (timeLeft === 0) {
+            timerEl.textContent = '';
+            clearInterval(timeInterval);
+            endGame();
         }
     }, 1000);
 };
@@ -74,11 +81,13 @@ function displayQuestion() {
 }
 
 function wrongAnswer() {
+    wrongText.style.display = "block";
     //display "wrong" below question
     //take time away from countdown
 }
 
 function correctAnswer() {
+    correctText.style.display = "block";
     //display "correct" below question
     //move on to next question
     //store point in local storage
@@ -94,7 +103,9 @@ function startGame() {
 
 // timer runs out
 function endGame() {
-    //form to input initials
+    questionBox.style.display = "none";
+    endText.style.display = "block";
+    
     //score is stored in local storage
 }
 
@@ -104,6 +115,7 @@ function displayScores() {
 
 //EVENT LISTENERS
 startButton.addEventListener('click', startGame);
+
 option1.addEventListener('click', wrongAnswer);
 option3.addEventListener('click', wrongAnswer);
 option2.addEventListener('click', correctAnswer);

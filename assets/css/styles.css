@@ -6,25 +6,50 @@
 /* High Scores in top left corner */
 
 /* Body Styles */
-h2 {
+#countdown {
     text-align: left;
+    float: left;
     font-size: 12px;
 }
 
 #high-scores {
     text-align: right;
+    float: right;
+    font-size: 12px;
 }
 
-body {
+h1 {
     text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+#button-format {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #question-box {
     display: none;
 }
 
+#wrong-answer {
+    display: none;
+}
+
+#correct-answer {
+    display: none;
+}
+
 #intro {
     display: block;
+}
+
+#end-text {
+    display: none;
 }
 
 /* Start Button styling */

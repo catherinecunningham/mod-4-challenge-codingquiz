@@ -9,18 +9,22 @@
 </head>
 
 <body>
+    <header>
 <!--Countdown-->
-    <h2 id="countdown">Countdown</h2>
-    <h2 id="high-scores" link href="#">High Scores</h2>
+        <h2 id="countdown">Countdown</h2>
+        <h2 id="high-scores" link href="#">High Scores</h2>
+    </header>
 <!--Start Button-->
     <h1>Coding Quiz</h1>
     <div id="intro">
     <p id="intro-text">
         Test your coding knowledge by answering a few questions.  Your questions are TIMED!  If you answer wrong, you will have less time to play.  Answer as many questions as you can in the time given and see your score at the end of the quiz.
     </p>
+    <div id="button-format">
     <button id="start-button">
         Start!
     </button>
+    </div>
     </div>
 <!--Questions and Answer Options-->
     <div id="question-box">
@@ -36,6 +40,29 @@
        <div id="option-3">
             <button id="button-option-3"></button>
        </div>
+    </div>
+    <div id="wrong-answer">
+        Wrong!
+    </div>
+    <div id="correct-answer">
+        Correct!
+    </div>
+    
+
+<!--Initials Form-->
+    <div id="end-text">
+        <p>
+            Thank you for taking the quiz.
+        </p>
+
+        <form method="POST">
+            <div class="input-initials">
+                <label for="initials">Write your initials here:</label>
+                <input type="text" name="initials" id="initials" placeholder="Initials" />
+                <button id="submit-initials">Submit</button>
+            </div>
+
+        </form>
     </div>
     <script src="./assets/js/script.js"></script>
 </body>
