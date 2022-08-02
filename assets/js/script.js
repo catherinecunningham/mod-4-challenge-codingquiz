@@ -27,8 +27,7 @@ function countdown() {
             timerEl.textContent = timeLeft + ' second remaining';
             timeLeft--;
         }
-        // store time as high score HELP
-        else if (timeLeft === 0 || questionIndex === 0) {
+        else if (timeLeft === 0) {
             timerEl.textContent = 'Time is up!';
             clearInterval(timeInterval);
             endGame();
@@ -37,7 +36,7 @@ function countdown() {
     }, 1000);
 };
 
-//question content, array of questions with three objects
+// question content, array of questions with three objects
 var quizQuestions = [
     {
         question: "Which of the following is NOT a coding language?",
@@ -74,9 +73,12 @@ function displayQuestion() {
     option1.textContent = quizQuestions[questionIndex].answers.A;
     option2.textContent = quizQuestions[questionIndex].answers.B;
     option3.textContent = quizQuestions[questionIndex].answers.C;
-    
+    // if all questions are answered, move to last screen
+    if(questionIndex > 3) {
+        endGame();
+    }
 
-}
+};
  //check answer to see if correct selection is made
 function checkAnswer(event) {
     if(event.target.textContent === quizQuestions[questionIndex].correctAnswer) {
@@ -89,7 +91,7 @@ function checkAnswer(event) {
         correctText.style.display = "none";
         timeLeft -= 10;
     }
-    }
+};
 
 // start button begins timer and switches screen to first question
 function startGame() {
@@ -97,25 +99,24 @@ function startGame() {
     questionBox.style.display = "block";
     countdown();
     displayQuestion();
-}
+};
 
 // timer runs out
 function endGame() {
     questionBox.style.display = "none";
     endText.style.display = "block";
-    // HELP
+
     //score is stored in local storage
-}
+};
 
 function displayScores() {
     var score = initials.value;
     localStorage.setItem('highscore', score);
     localStorage.setItem('initials', JSON.stringify(initials));
-    console.log(localStorage);
-
-    // HELP
-    //scores displayed on screen after form input
-}
+    
+    // display scores on screen
+    return initials;
+};
 
 //EVENT LISTENERS
 startButton.addEventListener('click', startGame);
@@ -125,4 +126,4 @@ option3.addEventListener('click', checkAnswer);
 option2.addEventListener('click', checkAnswer);
 
 submitInitials.addEventListener('click', displayScores);
-//submit button is refreshing the page
+//submit button is refreshing the page??
