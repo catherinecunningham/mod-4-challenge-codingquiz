@@ -12,11 +12,11 @@ var endText = document.getElementById("end-text");
 var initials = document.getElementById("initials");
 var wrongText = document.getElementById("wrong-answer");
 var correctText = document.getElementById("correct-answer");
+var timeLeft = 60;
 
 // FUNCTIONS
 // timer function
 function countdown() {
-    var timeLeft = 10;
     var timeInterval = setInterval(function() {
         if (timeLeft > 1) {
             timerEl.textContent = timeLeft + ' seconds remaining';
@@ -26,11 +26,13 @@ function countdown() {
             timerEl.textContent = timeLeft + ' second remaining';
             timeLeft--;
         }
-        else if (timeLeft === 0) {
+        // store time as high score HELP
+        else if (timeLeft === 0 || questionIndex === 1) {
             timerEl.textContent = 'Time is up!';
             clearInterval(timeInterval);
             endGame();
         }
+      
     }, 1000);
 };
 
@@ -43,7 +45,7 @@ var quizQuestions = [
             B: 'Waffle House',
             C: 'Python',
         },
-        correctAnswer: 'B'
+        correctAnswer: 'Waffle House'
     },
     {
         question: "Are semicolons required in JavaScript for the code to work?",
@@ -52,7 +54,7 @@ var quizQuestions = [
             B: 'No, but you should have them.',
             C: 'No, they are completely unnecessary.',
         },
-        correctAnswer: 'B'
+        correctAnswer: 'No, but you should have them.'
     },
     {
         question: "What does JavaScript do?",
@@ -61,17 +63,9 @@ var quizQuestions = [
             B: 'Adds functionality to a webpage.',
             C: 'Provides the basic structure of a webpage.',
         },
-        correctAnswer: 'B'
+        correctAnswer: 'Adds functionality to a webpage.'
     } 
 ];
-
-// HELP
-// index for question array
-for(var i=0; i < quizQuestions.length; i++) {
-    //complete loop to run through all questions in array
-    //based on wrong or correct answer function outputs
-
-}
 
 function displayQuestion() {
     question.textContent = quizQuestions[questionIndex].question;
@@ -79,22 +73,21 @@ function displayQuestion() {
     option2.textContent = quizQuestions[questionIndex].answers.B;
     option3.textContent = quizQuestions[questionIndex].answers.C;
     
-}
 
-function wrongAnswer() {
-    wrongText.style.display = "block";
-    // HELP
-    //display "wrong" below question - already set up in CSS
-    //take time away from countdown
 }
-
-function correctAnswer() {
-    correctText.style.display = "block";
-    //HELP
-    //display "correct" below question - already set up in CSS
-    //move on to next question
-    //store point in local storage
-}
+ //correctAnswer function NEW
+function checkAnswer(event) {
+    if(event.target.textContent === quizQuestions[questionIndex].correctAnswer) {
+        questionIndex++;
+        displayQuestion();
+        correctText.style.display = "block";
+        wrongText.style.display = "none";
+    } else {
+        wrongText.style.display = "block";
+        correctText.style.display = "none";
+        timeLeft -= 10;
+    }
+    }
 
 // start button begins timer and switches screen to first question
 function startGame() {
@@ -113,6 +106,9 @@ function endGame() {
 }
 
 function displayScores() {
+    var score = initials.value;
+    localStorage.setItem('highscore', score);
+    
     // HELP
     //scores displayed on screen after form input
 }
@@ -120,7 +116,6 @@ function displayScores() {
 //EVENT LISTENERS
 startButton.addEventListener('click', startGame);
 
-// HELP - add functionality for answer button clicks
-option1.addEventListener('click', wrongAnswer);
-option3.addEventListener('click', wrongAnswer);
-option2.addEventListener('click', correctAnswer);
+option1.addEventListener('click', checkAnswer);
+option3.addEventListener('click', checkAnswer);
+option2.addEventListener('click', checkAnswer);
