@@ -12,7 +12,8 @@ var endText = document.getElementById("end-text");
 var initials = document.getElementById("initials");
 var wrongText = document.getElementById("wrong-answer");
 var correctText = document.getElementById("correct-answer");
-var timeLeft = 60;
+var timeLeft = 10;
+var submitInitials = document.getElementById("submit-initials");
 
 // FUNCTIONS
 // timer function
@@ -27,7 +28,7 @@ function countdown() {
             timeLeft--;
         }
         // store time as high score HELP
-        else if (timeLeft === 0 || questionIndex === 1) {
+        else if (timeLeft === 0 || questionIndex === 0) {
             timerEl.textContent = 'Time is up!';
             clearInterval(timeInterval);
             endGame();
@@ -67,6 +68,7 @@ var quizQuestions = [
     } 
 ];
 
+// display questions in correct format on screen
 function displayQuestion() {
     question.textContent = quizQuestions[questionIndex].question;
     option1.textContent = quizQuestions[questionIndex].answers.A;
@@ -75,7 +77,7 @@ function displayQuestion() {
     
 
 }
- //correctAnswer function NEW
+ //check answer to see if correct selection is made
 function checkAnswer(event) {
     if(event.target.textContent === quizQuestions[questionIndex].correctAnswer) {
         questionIndex++;
@@ -108,7 +110,9 @@ function endGame() {
 function displayScores() {
     var score = initials.value;
     localStorage.setItem('highscore', score);
-    
+    localStorage.setItem('initials', JSON.stringify(initials));
+    console.log(localStorage);
+
     // HELP
     //scores displayed on screen after form input
 }
@@ -119,3 +123,6 @@ startButton.addEventListener('click', startGame);
 option1.addEventListener('click', checkAnswer);
 option3.addEventListener('click', checkAnswer);
 option2.addEventListener('click', checkAnswer);
+
+submitInitials.addEventListener('click', displayScores);
+//submit button is refreshing the page

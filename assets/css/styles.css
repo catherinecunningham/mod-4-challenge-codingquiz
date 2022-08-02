@@ -1,23 +1,24 @@
+/* Global Formatting */
 * {
     font-family: Arial, Helvetica, sans-serif;
     color: navy;
 } 
 
-/* High Scores in top left corner */
-
-/* Body Styles */
+/* Align Countdown */
 #countdown {
     text-align: left;
     float: left;
     font-size: 12px;
 }
 
+/* Align high scores menu */
 #high-scores {
     text-align: right;
     float: right;
     font-size: 12px;
 }
 
+/* Align Title and Intro Text */
 h1 {
     text-align: center;
 }
@@ -26,12 +27,14 @@ p {
     text-align: center;
 }
 
+/* Center Start Button */
 #button-format {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+/* Varying Display Options */
 #question-box {
     display: none;
 }
@@ -51,7 +54,3 @@ p {
 #end-text {
     display: none;
 }
-
-/* Start Button styling */
-
-/* Question content styling */
