@@ -1,4 +1,4 @@
-//GLOBAL VARIABLES
+//GLOBAL VARIABLES and DOM ELEMENTS
 var intro = document.getElementById("intro");
 var questionBox = document.getElementById("question-box");
 var timerEl = document.getElementById('countdown');
@@ -16,7 +16,7 @@ var correctText = document.getElementById("correct-answer");
 // FUNCTIONS
 // timer function
 function countdown() {
-    var timeLeft = 3;
+    var timeLeft = 10;
     var timeInterval = setInterval(function() {
         if (timeLeft > 1) {
             timerEl.textContent = timeLeft + ' seconds remaining';
@@ -27,7 +27,7 @@ function countdown() {
             timeLeft--;
         }
         else if (timeLeft === 0) {
-            timerEl.textContent = '';
+            timerEl.textContent = 'Time is up!';
             clearInterval(timeInterval);
             endGame();
         }
@@ -43,7 +43,7 @@ var quizQuestions = [
             B: 'Waffle House',
             C: 'Python',
         },
-        correctAnswer: 'b'
+        correctAnswer: 'B'
     },
     {
         question: "Are semicolons required in JavaScript for the code to work?",
@@ -52,7 +52,7 @@ var quizQuestions = [
             B: 'No, but you should have them.',
             C: 'No, they are completely unnecessary.',
         },
-        correctAnswer: 'b'
+        correctAnswer: 'B'
     },
     {
         question: "What does JavaScript do?",
@@ -61,10 +61,11 @@ var quizQuestions = [
             B: 'Adds functionality to a webpage.',
             C: 'Provides the basic structure of a webpage.',
         },
-        correctAnswer: 'b'
+        correctAnswer: 'B'
     } 
 ];
 
+// HELP
 // index for question array
 for(var i=0; i < quizQuestions.length; i++) {
     //complete loop to run through all questions in array
@@ -82,13 +83,15 @@ function displayQuestion() {
 
 function wrongAnswer() {
     wrongText.style.display = "block";
-    //display "wrong" below question
+    // HELP
+    //display "wrong" below question - already set up in CSS
     //take time away from countdown
 }
 
 function correctAnswer() {
     correctText.style.display = "block";
-    //display "correct" below question
+    //HELP
+    //display "correct" below question - already set up in CSS
     //move on to next question
     //store point in local storage
 }
@@ -105,17 +108,19 @@ function startGame() {
 function endGame() {
     questionBox.style.display = "none";
     endText.style.display = "block";
-    
+    // HELP
     //score is stored in local storage
 }
 
 function displayScores() {
+    // HELP
     //scores displayed on screen after form input
 }
 
 //EVENT LISTENERS
 startButton.addEventListener('click', startGame);
 
+// HELP - add functionality for answer button clicks
 option1.addEventListener('click', wrongAnswer);
 option3.addEventListener('click', wrongAnswer);
 option2.addEventListener('click', correctAnswer);
