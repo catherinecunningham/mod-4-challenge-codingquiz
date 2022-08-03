@@ -14,11 +14,27 @@ var wrongText = document.getElementById("wrong-answer");
 var correctText = document.getElementById("correct-answer");
 var timeLeft = 10;
 var submitInitials = document.getElementById("submit-initials");
+var highScore1 = document.getElementById("score1");
+var highScore2 = document.getElementById("score2");
+var highScore3 = document.getElementById("score3");
+
+for (let i = 0; i < localStorage.length; i++) {
+    var highScore = document.getElementById("score" + (i + 1))
+    highScore.textContent = localStorage.key(i) + ': ' + localStorage.getItem(localStorage.key(i)); 
+}
+
+//localStorage.getItem('score1')
+//localStorage.getItem()
+//localStorage.getItem()
 
 // FUNCTIONS
 // timer function
 function countdown() {
     var timeInterval = setInterval(function() {
+        if (questionIndex == quizQuestions.length) {
+            clearInterval(timeInterval);
+        }
+        
         if (timeLeft > 1) {
             timerEl.textContent = timeLeft + ' seconds remaining';
             timeLeft--;
@@ -69,16 +85,17 @@ var quizQuestions = [
 
 // display questions in correct format on screen
 function displayQuestion() {
+    // if all questions are answered, move to last screen
+    if(questionIndex == quizQuestions.length) {
+        endGame();
+    }
     question.textContent = quizQuestions[questionIndex].question;
     option1.textContent = quizQuestions[questionIndex].answers.A;
     option2.textContent = quizQuestions[questionIndex].answers.B;
     option3.textContent = quizQuestions[questionIndex].answers.C;
-    // if all questions are answered, move to last screen
-    if(questionIndex > 3) {
-        endGame();
-    }
-
+    console.log(questionIndex);
 };
+
  //check answer to see if correct selection is made
 function checkAnswer(event) {
     if(event.target.textContent === quizQuestions[questionIndex].correctAnswer) {
@@ -89,7 +106,9 @@ function checkAnswer(event) {
     } else {
         wrongText.style.display = "block";
         correctText.style.display = "none";
-        timeLeft -= 10;
+        timeLeft -= 1;
+        questionIndex++;
+        displayQuestion();
     }
 };
 
@@ -105,15 +124,21 @@ function startGame() {
 function endGame() {
     questionBox.style.display = "none";
     endText.style.display = "block";
+    
+    
+
+    
 
     //score is stored in local storage
 };
 
 function displayScores() {
-    var score = initials.value;
-    localStorage.setItem('highscore', score);
-    localStorage.setItem('initials', JSON.stringify(initials));
     
+    //localStorage.setItem('highscore', score);
+    //localStorage.setItem('initials', JSON.stringify(initials));
+    var initialsName = initials.value;
+    localStorage.setItem(initialsName, timeLeft);
+
     // display scores on screen
     return initials;
 };
