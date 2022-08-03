@@ -17,15 +17,13 @@ var submitInitials = document.getElementById("submit-initials");
 var highScore1 = document.getElementById("score1");
 var highScore2 = document.getElementById("score2");
 var highScore3 = document.getElementById("score3");
+var highScores = document.getElementById("highscores");
 
+// high score storage
 for (let i = 0; i < localStorage.length; i++) {
     var highScore = document.getElementById("score" + (i + 1))
     highScore.textContent = localStorage.key(i) + ': ' + localStorage.getItem(localStorage.key(i)); 
 }
-
-//localStorage.getItem('score1')
-//localStorage.getItem()
-//localStorage.getItem()
 
 // FUNCTIONS
 // timer function
@@ -124,22 +122,14 @@ function startGame() {
 function endGame() {
     questionBox.style.display = "none";
     endText.style.display = "block";
-    
-    
+    highScores.style.display = "block";
 
-    
-
-    //score is stored in local storage
 };
 
 function displayScores() {
-    
-    //localStorage.setItem('highscore', score);
-    //localStorage.setItem('initials', JSON.stringify(initials));
     var initialsName = initials.value;
     localStorage.setItem(initialsName, timeLeft);
 
-    // display scores on screen
     return initials;
 };
 
@@ -151,4 +141,3 @@ option3.addEventListener('click', checkAnswer);
 option2.addEventListener('click', checkAnswer);
 
 submitInitials.addEventListener('click', displayScores);
-//submit button is refreshing the page??

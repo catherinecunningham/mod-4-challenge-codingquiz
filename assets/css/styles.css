@@ -54,3 +54,7 @@ p {
 #end-text {
     display: none;
 }
+
+#highscores {
+    display: none;
+}
