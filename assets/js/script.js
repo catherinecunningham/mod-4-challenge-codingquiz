@@ -12,7 +12,7 @@ var endText = document.getElementById("end-text");
 var initials = document.getElementById("initials");
 var wrongText = document.getElementById("wrong-answer");
 var correctText = document.getElementById("correct-answer");
-var timeLeft = 10;
+var timeLeft = 25;
 var submitInitials = document.getElementById("submit-initials");
 var highScore1 = document.getElementById("score1");
 var highScore2 = document.getElementById("score2");
@@ -105,7 +105,7 @@ function checkAnswer(event) {
     } else {
         wrongText.style.display = "block";
         correctText.style.display = "none";
-        timeLeft -= 1;
+        timeLeft -= 5;
         questionIndex++;
         displayQuestion();
     }
