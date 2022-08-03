@@ -18,6 +18,7 @@ var highScore1 = document.getElementById("score1");
 var highScore2 = document.getElementById("score2");
 var highScore3 = document.getElementById("score3");
 var highScores = document.getElementById("highscores");
+var mainTitle = document.getElementById("main-title");
 
 // high score storage
 for (let i = 0; i < localStorage.length; i++) {
@@ -123,6 +124,8 @@ function endGame() {
     questionBox.style.display = "none";
     endText.style.display = "block";
     highScores.style.display = "block";
+    wrongText.style.display = "none";
+    correctText.style.display = "none";
 
 };
 
