@@ -6,6 +6,6 @@ There are some parts of this quiz that I would still like to improve after I hav
 
 I could not have completed this project without the help of many people in my program, including multiple tutors, TA's, and classmates.  I have so much gratitude for them helping me with my code and helping me with concepts with which I was struggling.
 
-The active page can be found here:
+The active page can be found here: https://catherinecunningham.github.io/mod-4-challenge-codingquiz/
 
 ![image](https://user-images.githubusercontent.com/107148691/182655888-7bb79d26-fa83-46e5-af53-431e271c5ca1.png)
